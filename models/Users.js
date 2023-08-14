@@ -20,7 +20,7 @@ const UserSchema = new Schema({
     default: false,
   },
   verificationCode: {
-    type: String,
+    type: Number,
     default: true,
   },
   createdAt: {
