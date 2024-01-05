@@ -1,54 +1,12 @@
 const express = require("express");
 const Users = require("../../models/Users");
 const router = express.Router();
-const { v4: uuidv4 } = require("uuid");
-
-// Creating and posting user details
-router.post("/", async (req, res) => {
-  try {
-    const { name, email, password } = req.body;
-
-    if (!name || !email || !password) {
-      return res.status(400).json({ error: "All fields are required." });
-    }
-
-    // Email validation using regex
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    if (!emailRegex.test(email)) {
-      return res.status(400).json({ error: "Invalid email format." });
-    }
-
-    if (name.length < 2) {
-      return res
-        .status(400)
-        .json({ error: "Name should have at least 2 characters." });
-    }
-
-    // Password validation using regex
-    const passwordRegex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    if (!passwordRegex.test(password)) {
-      return res.status(400).json({
-        error:
-          "Password should be at least 8 characters long and contain at least 1 uppercase letter, 1 lowercase letter, 1 digit, and 1 special character.",
-      });
-    }
-
-    const newUser = new Users({
-      name,
-      email,
-      password,
-    });
-
-    const createdUser = await newUser.save();
-    res.status(200).json({ id: createdUser.id, name, email });
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
+const { updateName } = require("../../controllers/userControllers");
+const { authenticate } = requiew("../../middlewares/authenticate");
+// updating name
+router.put("/", authenticate, updateName);
 
 // fetching /getting user details
-
 router.get("/:email", async (req, res) => {
   try {
     const { email } = req.params;

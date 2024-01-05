@@ -1,7 +1,8 @@
 import React from "react";
+import LandingPage from "./containers/LandingPage";
 
 function App() {
-  return <div className="bg-blue-500 text-white p-4">Meedle!</div>;
+  return <LandingPage />;
 }
 
 export default App;

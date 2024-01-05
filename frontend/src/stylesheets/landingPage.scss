@@ -1,0 +1,10 @@
+.landing-page-container {
+  background: linear-gradient(
+      100deg,
+      rgba(244, 0, 255, 0.2),
+      rgba(255, 0, 0, 0.1)
+    ),
+    url("../assets/backgroundImg.avif") no-repeat center center/cover;
+  width: 100vw;
+  height: 100vh;
+}

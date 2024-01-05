@@ -1,0 +1,40 @@
+.navbar-container {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 250px;
+
+  .name {
+    font-size: 32px;
+    font-weight: 600;
+  }
+  .search-tab {
+    position: relative;
+    opacity: 0.5;
+    width: 350px;
+    padding: 5px 30px;
+    background-color: #fff;
+    border-radius: 50px;
+    .search-icon {
+      position: absolute;
+      top: 28%;
+      left: 2%;
+      color: #9b9898;
+    }
+    input {
+      width: 300px;
+    }
+  }
+  .navbar-items {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 500px;
+
+    div {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
